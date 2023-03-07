@@ -74,6 +74,8 @@ export class NotificationsComponent implements OnDestroy, AfterViewInit, OnInit 
     }
   }
 
+  // relocating
+
   relocate(info: any){
     if(info.type == 'userProfile'){
       this.router.navigate([`my_account/${info.linker}`])

@@ -42,7 +42,6 @@ import { SearchBarComponent } from './searchBar/search-bar/search-bar.component'
 import { CreatePostComponent } from './posts/create-post/create-post.component';
 import { NotificationsComponent } from './notifications/notifications/notifications.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
