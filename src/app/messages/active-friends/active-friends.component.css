@@ -1,0 +1,230 @@
+.mainC{
+    padding: 20px 15px 15px 40px;
+    height: 100% ;
+}
+.active-friends-wrap{
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    max-height: 500px;
+    margin-left: 4px;
+}
+
+.header-contacts-wrap{
+    margin-left: 10px;
+    margin-right: 20px;
+    border-bottom: 1px solid lightgrey;
+}
+.header-contacts{
+    display: inline-block;
+    margin: 0 0 10px 5px;
+}
+.contacts-icon {
+    font-size: 15px;
+}
+.active-friends{
+    display: flex;
+    flex-direction: column;
+}
+
+.friend{
+    width: 100%;
+}
+
+.friend-info{
+    transition: 300ms;
+    cursor: pointer;
+    display: flex;
+    padding: 11px 40px 11px 15px;
+    margin: 7px 0 0 0;
+    width: calc(100% - 25px);
+}
+.border-bottom{
+    border-bottom: 1px solid lightgrey;
+    width: calc(100% - 25px);
+    margin-bottom: 5px;
+    transition: 300ms;
+}
+
+
+
+.friend-name{
+    max-width: 175px;
+    word-wrap: break-word;
+    display: inline-block;
+    margin: 0;
+    font-weight: 300;
+    font-size: 14.5px;
+    letter-spacing: .2px;
+    color: rgb(80, 80, 80);
+}
+.friend-name-wrap{
+    display: flex;
+    align-items: center;
+}
+/* img */
+.friend-img-wrap{
+    width: 55px !important;
+    height: 55px;
+    border-radius: 50%;
+    box-shadow: 0 1px 7px rgb(184 184 184);
+    margin: 0 10px 0 0;
+    position: relative;
+}
+.keep-image{
+    border-radius: 50%;
+    width: 55px !important;
+    height: 55px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.friend-img{
+    height: 55px;
+}
+.no-image {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(240, 240, 240);
+    display: grid;
+    place-content: center;
+}
+
+.no-image fa-icon {
+    font-size: 21px;
+    color: var(--mainBackground);
+}
+
+.friend-active-alert{
+    width: 15.2px;
+    height: 15px;
+    border: 3px solid rgb(232, 232, 232);
+}
+
+/* arrows */
+.arrows{
+    display: flex;
+    padding: 0px 0 25px 15px;
+}
+.arrow{
+    background: white;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 5px;
+    display: grid;
+    place-content: center;
+}
+
+.no-contacts{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 1400px) {
+    .mainC {
+        padding: 20px 0 15px 20px;
+    }
+    .friend-name-wrap{
+        min-width: 150px;
+    }
+}
+
+@media screen and (min-width: 1170px) {
+    .friend-info:hover~.border-bottom {
+        border-bottom: 1px solid transparent;
+    }
+    .friend-info:hover {
+        border-radius: 10px;
+        background: rgb(215, 215, 215);
+    }
+}
+
+@media screen and (max-width: 1170px) {
+    
+    .friend-name-wrap {
+        min-width: 160px;
+    }
+    .friend-img-wrap{
+        margin: 0;
+    }
+    .mainC {
+        padding-left: 0;
+        padding-bottom: 5px;
+        padding-top: 0px;
+    }
+    .friend{
+        max-width: 110px;
+        min-width: 110px;
+    }
+    .friend-info{
+        margin: 7px 0;
+        flex-direction: column;
+        align-items: center;
+        width: calc(100% - 10px);
+        padding: 11px 3px 11px 3px;
+    }
+    .friend-name{
+        width: 100% !important;
+        padding: 8px 25px 0 25px;
+        text-align: center;
+    }
+    .active-friends-wrap {
+        overflow-y: initial !important;
+        overflow-x: auto;
+    }
+    .header-contacts-wrap{
+        margin: 0 0 0 5px
+    }
+    .active-friends {
+        flex-direction: row !important;
+    }    
+    .friend-name {
+        font-size: 13px;
+    }
+    .border-bottom{
+        display: none;
+    }
+}
+@media screen and (max-width: 550px){
+    .friend-active-alert{
+        border: 3px solid white;
+    }
+    .arrow {
+        background: rgb(239, 239, 239);
+    }
+    .header-contacts-wrap,
+    .active-friends-wrap{
+        margin: 0;
+    }
+    .active-friends-wrap{
+        padding-left: 10px;
+    }
+    .header-contacts-wrap{
+        padding-left: 20px;
+        border-bottom: 0;
+    }
+    .friend-info{
+        padding: 5px 5px 5px 8px;
+    }
+}
+
+/* cahnge on 1000px */
+
+/* scrollbar */
+::-webkit-scrollbar-track,
+::-webkit-scrollbar {
+    visibility: hidden;
+    width: 0px;
+    background: transparent;
+    display: none;
+}

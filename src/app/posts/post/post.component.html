@@ -1,0 +1,40 @@
+<div class="post">
+    <div class="uploader-wrapper">
+        <app-image-name [obtainedPost]="returnUserInfo()"></app-image-name>
+        <!-- creatorId,creatorProfilePic,creatorNickname,date,usersIcon  -->
+        <div class="change-yours" *ngIf="obtainedPost.creatorId === userId">
+            <button class="post-button" (click)="startEdit()">
+                <fa-icon class="actIcon" [icon]="listIcon"></fa-icon>
+            </button>
+            <div class="actions-wrapper" *ngIf="editing" [@wrap]="wrap">
+                <button class="post-button act" (click)="onEdit()">
+                    <fa-icon class="actIcon" [icon]="editIcon"></fa-icon>
+                </button>
+                <button class="post-button act" (click)="onDelete()">
+                    <fa-icon class="actIcon" [icon]="deleteIcon"></fa-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="post-title" (click)="navigateComments()">
+        <h3 [ngClass]="{'adjust-margin': !obtainedPost?.image}">
+            {{obtainedPost?.post}}
+        </h3>
+    </div>
+    <div class="post-file-wrap" *ngIf="obtainedPost?.image">
+        <img class="post-file"
+            (click)="navigateComments()"
+            [src]="obtainedPost?.image"
+        >
+    </div>
+    <div class="post-interaction" (click)="navigateComments()">
+        <div class="interaction" >
+            <fa-icon [icon]="commentIcon"></fa-icon>
+            <span class="int-info">{{obtainedPost?.commentsLength}} Comment{{obtainedPost?.commentsLength > 1 || obtainedPost?.commentsLength === 0 ? "s" : ""}} </span>
+        </div>
+        <!-- <div class="interaction" (click)="likePost()">
+            <fa-icon [icon]="thumbsUpIcon"></fa-icon>
+            <span class="int-info">3000 Likes</span>
+        </div> -->
+    </div>
+</div>

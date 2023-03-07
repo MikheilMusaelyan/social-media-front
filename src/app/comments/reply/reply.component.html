@@ -1,0 +1,42 @@
+<div class="reply-commenter-wrap commenter-wrap" [ngClass]="{ 'addPadding' : isReplying}">
+    <div class="comment-circle"></div>
+    <div class="comment-info-part">
+        <div class="replier-img-wrap" [routerLink]="['/my_account', replyObject.creatorId]">
+            <img *ngIf="replyObject.creatorPic else userIcon" class="replier-img" [src]="replyObject.creatorPic">
+            <ng-template #userIcon>
+                <fa-icon [icon]="usersIcon" class="replier-icon replier-user-i"></fa-icon>
+            </ng-template>
+        </div>
+        <div class="commenter-name-wrap">
+            <h5 class="replier-name">{{replyObject.creatorNickname}}</h5>
+            <span class="post-age">{{replyObject.date | transDate}}</span>
+        </div>
+    </div>
+    <div class="comment-part">
+        <div class="reply-wrap">
+            <span class="comment replier-comment">{{replyObject.comment}}</span>
+        </div>
+        <div class="replying-image" *ngIf="replyObject.image.length > 0">
+            <img openImg [src]="replyObject.image" alt="" class="picked-image">
+        </div>
+        <div class="comment-interaction reply-interaction">
+            <div class="interaction-wrap" (click)="reply()">
+                <span class="commentMethod">Reply</span>
+            </div>
+            <div class="interaction-wrap" (click)="edit()" *ngIf="myId === replyObject.creatorId" >
+                <span class="commentMethod">Edit</span>
+            </div> 
+            <div class="interaction-wrap" (click)="deleteReply()" *ngIf="myId === replyObject.creatorId" >
+                <span class="commentMethod">Delete</span>
+            </div>
+            <!-- <div class="interaction-wrap">
+                <fa-icon class="replier-icon" [icon]="thumbsUpIcon"></fa-icon>
+                <span class="replier-span">100 Likes</span>
+            </div> -->
+        </div>
+    </div>
+    <app-you-replying 
+    (commentEmitter)="getReply($event)" 
+    *ngIf="isReplying" 
+    ></app-you-replying>
+</div>

@@ -1,0 +1,70 @@
+.main{
+    display: flex;
+    justify-content: center;
+    transition: 250ms;
+}
+.content-wrap{
+    max-width: 1800px !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.posts-feed{
+    width: 50%;
+    margin: 20px 0 0 0;
+    padding: 0 30px;
+}
+/* messages */
+.messages-feed {
+    width: 25%;
+    position: relative;
+}
+
+.fill-up {
+    width: 25%;
+}
+
+.fixed {
+    max-width: 450px !important;
+    position: fixed;
+    width: calc(25% - 10px);
+}
+
+@media screen and (max-width: 1170px) {
+    .posts-feed {
+        width: 70%;
+        padding: 0 15px !important;
+    }
+    .content-wrap{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .fixed{
+        max-width: initial !important;
+        width: 100%;
+        position: static;
+    }
+    .messages-feed{
+        width: 100% !important;
+    }
+    .fill-up {
+        display: none;
+    }
+}
+@media screen and (max-width: 850px) {
+    .posts-feed {
+        width: 90%;
+    }
+}
+@media screen and (max-width: 550px) {
+    .posts-feed {
+        width: 100%;
+        margin: 0;
+        padding: 0 !important;
+    }
+    .main{
+        overflow-x: hidden;
+        padding: 70px 0 0 ;
+        background: white;
+    }
+}

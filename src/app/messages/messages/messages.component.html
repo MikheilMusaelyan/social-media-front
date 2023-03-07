@@ -1,0 +1,34 @@
+
+<div class="messages-main-wrap" #main >
+    <div class="goback" *ngIf="!miniWindow || miniWindow && !openMessages">
+        <fa-icon (click)="goBack()" [icon]="goBackIcon" class="go-back-icon"></fa-icon>
+    </div>
+    <div class="messages-primary-wrap">
+        <section class="friends-left-wrap"
+        #mWrap
+        [ngStyle]="{
+            'width' : !miniWindow ? 'auto' : '100%'
+        }"
+
+        [ngClass]="{
+        'visibleDiv' : !miniWindow || miniWindow && !openMessages, 
+        'hiddenDiv' : miniWindow && openMessages
+        }"
+        >
+            <app-friends-left
+            (stateEmitter)="changeState($event)"
+            ></app-friends-left>
+        </section>
+
+        <section class="message-box-wrap"
+        #mWrap
+        [ngClass]="{
+        'visibleDiv' : !miniWindow || miniWindow && openMessages, 
+        'hiddenDiv' : miniWindow && !openMessages
+        }">
+            <app-message-box 
+            (stateEmitter)="changeState($event)"
+            ></app-message-box>
+        </section>
+    </div>
+</div>

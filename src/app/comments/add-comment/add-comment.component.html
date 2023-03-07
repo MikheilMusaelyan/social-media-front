@@ -1,0 +1,42 @@
+<form  class="commenter-wrap" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <div class="comment-info-part">
+        <div class="commenter-img-wrap">
+            <img [src]="myProfilePic"
+                class="comment-img" *ngIf="myProfilePic else noImage">
+            <ng-template #noImage>
+                <div class="no-image-wrap">
+                    <fa-icon style="color: var(--mainBackground)" class="no-image-icon" [icon]="usersIcon"></fa-icon>
+                </div>
+            </ng-template>
+            </div>
+        <div class="commenter-name-wrap">
+            <h5 class="commenter-name">You</h5>
+        </div>
+    </div>
+    <div class="comment-part">
+        <div class="comment-wrap">
+            <textarea 
+            class="add-text-comment" 
+            incHeight 
+            placeholder="Add new comment"
+            formControlName="comment"
+            #tArea
+            >
+            </textarea>
+        </div>
+        <div class="image-wrapper" *ngIf="pickedImage">
+            <div class="close-it" (click)="closeImage()">
+                <fa-icon [icon]="closeIcon" class="close-icon"></fa-icon>
+            </div>
+            <img openImg [src]="pickedImage" class="picked-image">
+        </div>
+        <div class="comment-interaction">
+            <div class="interaction-wrap" (click)="invFile.click()"> 
+                <fa-icon class="imageIcon" [icon]="imageIcon"></fa-icon>
+                <span class="int-span reply">Upload</span>
+                <input type="file" class="invisible-file" #invFile (change)="pickImage($event)">
+            </div>
+            <button type="submit" class="submit-button">Comment</button>
+        </div>
+    </div>
+</form>

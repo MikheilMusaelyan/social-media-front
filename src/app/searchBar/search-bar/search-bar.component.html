@@ -1,0 +1,37 @@
+<div class="main-wrap">
+    
+<div class="main-search-container">
+    <div class="search-container">
+        <input [(ngModel)]="text" (input)="search()" type="text" placeholder="Search" class="search-bar" #input>
+        <button class="search-button" (click)="input.focus()" (click)="clear()">
+            <fa-icon [icon]="searchIcon"></fa-icon>
+        </button>
+    </div>
+</div>
+
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="user-wrap" *ngIf="receivedUsers?.length" 
+[@list]="list" (@list.start)="animStart()" (@list.done)="animEnd()"
+#liwrap
+[ngStyle]="{'overflow-y' : addScroll ? 'auto' : 'hidden'}">
+    
+    <li class="user-li" *ngFor="let user of receivedUsers"
+    (click)="seeUser(user._id)">
+        <div class="img-wrap">
+            <img class="img" [src]="user._id.profilePic" *ngIf="user?._id.profilePic.length > 1 else noImage">
+            <ng-template #noImage>
+                <fa-icon [icon]="userIcon"></fa-icon>
+            </ng-template>
+        </div>
+        <div class="nickname-wrap">
+            <span class="nickname">{{user._id.nickname}}</span>
+        </div>
+    </li>
+
+    <!-- <div class="next-page" *ngIf="receivedUsers?.length">
+        <span>Next page</span>
+        <fa-icon [icon]="nextIcon"></fa-icon>
+    </div> -->
+</div>
+
+</div>

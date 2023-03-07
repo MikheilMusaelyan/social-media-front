@@ -1,0 +1,62 @@
+.main{
+    display: flex;
+    justify-content: center;
+    
+}
+.notifications-main-wrapper{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.notification{
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 14px;
+    margin-top: 8px;
+    width: 80%;
+    /* background: rgb(240, 240, 240); */
+    border: 1px solid white;
+    background-color: white;
+    transition: 300ms ease-out;
+}
+
+.notification:hover{
+    background: rgb(232, 232, 232);
+}
+span{
+    display: block;
+}
+.text{
+    padding-bottom: 4px;
+}
+.date{
+    font-size: 12px;
+    color: #808080;
+}
+
+@media screen and (max-width: 1000px) {
+    .notifications-main-wrapper{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 550px) {
+    .notifications-main-wrapper {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .notifications-wrapper {
+        width: 100%;
+    }
+    .main{
+        background-color: white;
+    }
+    .notification{
+        background: rgb(240,240,240);
+    }
+    .notification:hover {
+        background: white;
+    }
+}

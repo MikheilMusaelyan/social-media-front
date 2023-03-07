@@ -1,0 +1,12 @@
+<div class="main">
+    <div class="mainC">
+        <h1 class="header">Login</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="authForm">
+            <div class="input-wrap">
+                <input class="auth-inp" type="text" placeholder="Username" formControlName="nickname">
+                <input class="auth-inp" type="password" placeholder="Password" formControlName="password">
+            </div>
+            <button [disabled]="loginForm.invalid" type="submit" class="submit">Login</button>
+        </form>
+    </div>
+</div>

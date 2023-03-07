@@ -1,0 +1,33 @@
+<div class="edit-profile-main-wrap">
+    <form class="edit-profile-wrap" [formGroup]="editForm">
+        <div class="edit-profile-text">
+            <h3 class="edit-profile-heading">Edit Profile</h3>
+        </div>
+        <div class="edit-profile-main">
+
+            <div class="edit-profile-block" >
+                <div class="text-icon-wrap" (click)="profile.click()">
+                    <fa-icon class="image-icon" [icon]="imageIcon"></fa-icon>
+                    <h4 class="change-text">Change Profile Picture</h4>
+                    <input #profile (change)="pickImg($event, 'profileImg')" type="file" class="invisible-file">
+                </div>
+                <div class="button-wrap" *ngIf="changeProfile">
+                    <button class="saveChanges" (click)="saveProfilePic()">Save</button>
+                    <button (click)="cancel()" class="saveChanges">Cancel</button>
+                </div>
+            </div>
+
+            <div class="edit-profile-block" >
+                <div class="text-icon-wrap" (click)="cover.click()">
+                    <fa-icon class="image-icon" [icon]="imageIcon"></fa-icon>
+                    <h4 class="change-text">Change Cover Picture</h4>
+                    <input #cover (change)="pickImg($event, 'coverImg')" type="file" class="invisible-file">
+                </div>
+                <div class="button-wrap" *ngIf="changeCover">
+                    <button class="saveChanges" (click)="saveCoverPic()">Save</button>
+                    <button (click)="cancel()" class="saveChanges">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

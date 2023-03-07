@@ -1,0 +1,56 @@
+<div class="mainC">
+    <div class="header-contacts-wrap">
+        <fa-icon class="contacts-icon" [icon]="friendIcon"></fa-icon> 
+        <h2 class="header-contacts">Friends</h2>
+    </div>
+
+    <div class="active-friends-wrap" #scrollingDiv>
+        <div class="active-friends">
+
+            <div class="no-contacts" *ngIf="friendsLoading">
+                <app-spinner></app-spinner>
+            </div>
+
+            <div class="no-contacts" *ngIf="myFriends.length == 0 && !friendsLoading" >
+                <span class="no-contacts-span">
+                    No Friends yet
+                </span>
+            </div>
+
+            <div class="friend" *ngFor="let friend of myFriends" #friends 
+            [routerLink]="['/my_account', friend?._id]">
+
+                <div class="friend-info">
+                    <div class="friend-img-wrap">
+                        <div class="friend-active-alert" *ngIf="friend.connected"></div>
+                        <div class="keep-image">
+                            <img *ngIf="friend.profilePic.length > 1 else noImage" [src]="friend.profilePic" class="friend-img">
+                        </div>
+                        <ng-template #noImage>
+                            <div class="no-image">
+                                <fa-icon [icon]="userIcon"></fa-icon>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <div class="friend-name-wrap">
+                        <h4 class="friend-name">{{friend.nickname}}</h4>
+                    </div>
+                </div>
+                
+                <div class="border-bottom"></div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- <div class="arrows" *ngIf="miniWindow">
+        <div class="arrow" (click)="moveLeft()">
+            <fa-icon [icon]="leftArrow"></fa-icon>
+        </div>
+        <div class="arrow" (click)="moveRight()">
+            <fa-icon [icon]="rightArrow"></fa-icon>
+        </div>
+    </div> -->
+</div>

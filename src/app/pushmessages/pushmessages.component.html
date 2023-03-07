@@ -1,0 +1,16 @@
+<section class="section" [@notification]="notification" (click)="goToMessages()">
+    <div class="notif" >
+        <div class="image-wrap">
+            <img *ngIf="this?.newMsg?.profPic else noImage" class="image" [src]="newMsg?.profPic">
+            <ng-template #noImage>
+                <fa-icon class="icon" [icon]="userIcon"></fa-icon>
+            </ng-template>
+        </div>
+        <aside class="text-side">
+            <div class="nickname">{{newMsg?.nickname}}</div>
+            <div class="text">
+                <span>{{newMsg?.message}}</span>
+            </div>
+        </aside>
+    </div>
+</section>

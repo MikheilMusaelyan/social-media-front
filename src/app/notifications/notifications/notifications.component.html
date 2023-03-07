@@ -1,0 +1,9 @@
+<div class="main">
+    <div class="notifications-main-wrapper">
+        <div *ngFor="let notification of notifications" class="notification"
+        (click)="relocate({type: notification.type, linker: notification.linker})">
+                <span class="text">{{notification.text}}</span>
+                <span class="date">{{notification.date | transDate}}</span>
+        </div>
+    </div>
+</div>

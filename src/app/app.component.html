@@ -1,0 +1,35 @@
+<app-pushmessages></app-pushmessages>
+<div class="main" #main>
+    <div class="loading" *ngIf="openLoading">
+        <app-spinner></app-spinner>
+    </div>
+
+    <div class="informError" *ngIf="isError" [@errMsg]="errMsg">
+        <span>
+            {{errMessage}}
+        </span>
+    </div>
+    
+    
+    <!-- <div class="recievedImg" *ngIf="newMsg">
+        {{newMsg?.message}}
+        <img [src]="newMsg?.profilePic" alt="">
+    </div> -->
+
+    <section [@imageWrapper]="imgWrapper" *ngIf="recievedImg" class="fixed-section" (click)="closeFile()">
+        <div class="close">
+            <fa-icon [icon]="closeIcon"></fa-icon>
+        </div>
+        <div class="file-wrap" (click)="closeFile()">
+            <img class="big-img" [src]="recievedImg" (click)="closeFile()">
+        </div>
+    </section>
+    
+    <section class="fixed-header">
+        <app-header></app-header>
+    </section>
+    
+    <section class="router-wrapper">
+        <router-outlet></router-outlet>
+    </section>
+</div>

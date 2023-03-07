@@ -1,0 +1,14 @@
+<div class="main">
+    <div class="content-wrap" [@main]="main">
+        <div class="fill-up"></div>
+        <section class="posts-feed">
+            <!-- add post -->
+            <router-outlet></router-outlet>
+        </section>
+        <div class="messages-feed" *ngIf="!miniWindow">
+            <div class="fixed">
+                <app-active-friends></app-active-friends>
+            </div>
+        </div>
+    </div>
+</div>

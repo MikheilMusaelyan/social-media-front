@@ -1,0 +1,141 @@
+:root{
+    --bigRadius: 25px;
+    --radius: 3px;
+    --bigText: 35px;
+    --inpText: 20px;
+    --lGrey: lightgrey;
+    --fwShadow: rgb(19, 17, 158); 
+    --mbShadow: rgb(18, 15, 165);
+    --typeShadow: rgb(22, 19, 179);
+    --mainBackground: rgb(93, 0, 255);
+    --minImgHeight: 200px;
+    --maxImgHeight: 650px
+}
+fa-icon{
+    color: var(--mainBackground);
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+body, html{
+    height: 100svh !important;
+}
+body {
+    margin: 0;
+    background: rgb(232, 232, 232);
+}
+.main{
+    padding: 80px 20px 20px 20px;    
+    background: rgb(232, 232, 232);
+}
+.wrapper{
+    min-width: 380px !important;
+}
+.adjust-margin {
+    margin: 14px 0 0 0 !important;
+}
+h3, h4, h2, span{
+    margin: 0;
+    word-wrap: break-word
+}
+button{
+    background: var(--mainBackground);
+    color: white;
+}
+
+.replying-image,
+.picked-image,
+.uploaded-image{
+    box-shadow: 0 0 3px lightgrey;
+}
+.picked-image,.uploaded-image {
+    max-width: 100%;
+    max-height: var(--maxImgHeight);
+    cursor: pointer;
+}
+
+.image-wrapper{
+    width: 60%;
+    margin-bottom: 10px;
+}
+
+.invisible-file {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.comment-circle {
+    content: '';
+    width: 7px;
+    height: 7px;
+    left: 3.2px;
+    top: 0;
+    transform: translate(-100%, 0%);
+    position: absolute;
+    background: var(--mainBackground);
+    border-radius: 50%;
+}
+
+.hiddenDiv{
+    width: 0px !important; 
+    height: 100% !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+.close-it {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 22px;
+    height: 22px;
+    background: var(--mainBackground);
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.close-icon {
+    color: white;
+    display: grid;
+}
+
+.commentMethod{
+    font-weight: bold;
+    font-size: 12px;
+    color: var(--mainBackground);
+}
+
+.friend-active-alert {
+    position: absolute;
+    z-index: 2;
+    bottom: 0px;
+    right: 0px;
+    background: rgb(85, 14, 207);
+    border-radius: 50% !important;
+    /* border: 3.2px solid white; */
+}
+
+.post-file-wrap{
+    background: rgb(240, 240, 240);
+    display: flex;
+    justify-content: center;
+}
+.post-file {
+    cursor: pointer;
+    max-height: var(--maxImgHeight);
+    max-width: 100%;
+}
+
+@media screen and (max-width: 480px){
+    .image-wrapper{
+        width: 100%;
+    }
+    .main {
+        padding: 80px 10px 10px 10px;
+    }
+}
+

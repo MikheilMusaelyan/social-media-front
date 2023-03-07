@@ -1,0 +1,34 @@
+<nav *ngIf="showNav">
+    <ul class="nav-ul">
+        <div class="list-icon" 
+        (click)="changeLis()"
+        #listIcon>
+            <fa-icon [icon]="menuIcon"></fa-icon>
+        </div>
+        
+        <div  class="li-wrap" *ngIf="openLis" [@liwrap]="liwrap" >
+            <li class="nav-li"  
+            (click)="toMyAcc()" *ngIf="isAuth"><span class="li-span">Profile</span></li>
+            <li class="nav-li" 
+            routerLink="" (click)="changeLis()"><span class="li-span">Home</span></li>
+            <li 
+            class="nav-li" 
+            routerLink="signin" (click)="changeLis()" *ngIf="!isAuth"><span class="li-span">Sign up</span></li>
+            <li 
+            class="nav-li" 
+            routerLink="login" (click)="changeLis()" *ngIf="!isAuth"><span class="li-span">Login</span></li>
+            <li 
+            class="nav-li" 
+            *ngIf="isAuth" (click)="logout()"><span class="li-span">Logout</span></li>
+            <li 
+            class="nav-li" 
+            *ngIf="isAuth" (click)="toMessages()"><span class="li-span">Messages</span></li>
+            <li class="nav-li" 
+            *ngIf="isAuth" routerLink="notifications"><span class="li-span">Notifications</span></li>
+        </div>
+        
+        <div class="search-bar-wrap">
+            <app-search-bar></app-search-bar>
+        </div>
+    </ul>
+</nav>

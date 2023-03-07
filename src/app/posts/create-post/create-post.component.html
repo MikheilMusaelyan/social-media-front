@@ -1,0 +1,27 @@
+<form *ngIf="isAuth" (ngSubmit)="addPost()" [formGroup]="uploadForm" class="upload-post post-section">
+    <div class="button-seperate">
+        <div class="profile-img-wrap profileC">
+            <img class="profilePic" [src]="myProfilePic" *ngIf="myProfilePic?.length > 1 else noImage">
+            <ng-template #noImage>
+                <div class="no-image">
+                    <fa-icon class="userIcon" [icon]="userIcon"></fa-icon>
+                </div>
+            </ng-template>
+        </div>
+
+        <div class="post-text-wrap profileC">
+            <textarea #tArea placeholder="Create post" maxlength="500" class="post-text" incHeight
+                formControlName="postText"></textarea>
+        </div>
+        <div class="upload-image profileC">
+            <input type="file" class="invisible-file" #invFile (change)="pickImage($event)">
+            <fa-icon class="upload-img-i" [icon]="imgIcon" (click)="invFile.click()"></fa-icon>
+        </div>
+    </div>
+    <div class="toUpload" *ngIf="pickedImg">
+        <img [src]="pickedImg">
+    </div>
+    <div class="submit-wrap">
+        <button type="submit" class="post-button">Add Post</button>
+    </div>
+</form>

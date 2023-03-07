@@ -1,0 +1,16 @@
+<app-create-post *ngIf="userId === myId"></app-create-post>
+<div class="posts-wrapper post-section">
+    <app-post 
+    *ngFor="let post of posts; let i = index"
+    [ind]="i"
+    [obtainedPost]="post"
+    [mode]="mode"
+    #allPosts
+    ></app-post>
+    <footer class="check-scroll" *ngIf="isLoading">
+        <app-spinner></app-spinner>
+    </footer>
+    <footer class="check-scroll" *ngIf="posts?.length < 1 && !isLoading">
+        <h4 class="no-posts">No posts</h4>
+    </footer>
+</div>

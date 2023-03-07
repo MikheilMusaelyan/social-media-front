@@ -1,0 +1,121 @@
+.post-section {
+    background: white;
+    padding: 17px 20px;
+    border-radius: var(--bigRadius);
+    margin-bottom: 15px;
+}
+
+/* upload post */
+.button-seperate {
+    display: flex;
+}
+
+.post-button {
+    cursor: pointer;
+    border: none;
+    padding: 7px 20px;
+    margin-top: 10px;
+    border-radius: var(--radius);
+}
+
+.post-text-wrap,
+.post-text {
+    width: 100%;
+}
+
+.post-text-wrap {
+    padding: 0 10px;
+    height: auto !important;
+}
+
+.post-text {
+    outline: none !important;
+    resize: none;
+    overflow: hidden;
+    font-size: 15px;
+    padding: 10px 12px;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 20px;
+    height: 40px;
+}
+
+.profileC {
+    height: 38px;
+    border-radius: var(--radius);
+    background-position: center;
+    background-size: cover;
+}
+
+/* image */
+.upload-image,
+.profile-img-wrap,
+.no-image {
+    min-width: 38px !important;
+    height: 38px !important;
+    width: 38px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userIcon {
+    font-size: 18px;
+}
+
+.no-image {
+    background: rgb(240, 240, 240);
+}
+
+.profilePic {
+    height: 38px;
+}
+
+.profile-img-wrap {
+    background: rgb(240, 240, 240);
+    border-radius: 50%;
+}
+
+.upload-img-i {
+    cursor: pointer;
+    font-size: 27px;
+}
+
+.invisible-file {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.toUpload {
+    box-shadow: 0 0 10px rgb(199, 199, 199);
+    margin: 30px;
+}
+
+.toUpload img {
+    width: 100%;
+}
+
+/* messages */
+
+@media screen and (max-width: 1170px) {
+    .upload-post {
+        border-bottom: 1px solid lightgrey;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .upload-post {
+        padding: 30px 20px;
+        border-top: 1px solid var(--lGrey);
+    }
+    .post-section {
+        border-radius: 0;
+        margin-bottom: 0;
+    }
+
+    .filter-posts {
+        border-bottom: 1px solid var(--lGrey);
+        border-top: 1px solid var(--lGrey);
+    }
+}

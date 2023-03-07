@@ -1,0 +1,37 @@
+<div class="main">
+    <form class="post-edit" [formGroup]="editForm" (ngSubmit)="onEdit()">
+        <div class="wrap-up-info">
+            <div class="uploader-img-wrap">
+                <img 
+                *ngIf="postData.creatorPic?.length > 1 else userIcon" class="uploader-img"
+                [src]="postData.creatorPic" >
+                
+                <ng-template #userIcon>
+                    <fa-icon [icon]="usersIcon" class="userIcon"></fa-icon>
+                </ng-template>
+            </div>
+            <div class="uploader-date">
+                <h3 class="uploader-name">{{postData.nickname}}</h3>
+            </div>
+        </div>
+        <div class="post-wrap">
+            <div class="post-text-wrap profileC">
+                <textarea [value]="editForm.get('post')" class="post-text" incHeight
+                formControlName="post"></textarea>
+            </div>
+            <div class="upload-image profileC">
+                <input type="file" class="invisible-file" #invFile (change)="pickImage($event)">
+                <fa-icon class="upload-img-i" [icon]="imgIcon" (click)="invFile.click()"></fa-icon>
+            </div>
+            <div class="image-wrap">
+                <img class="image" *ngIf="pickedImage" [src]="pickedImage">
+            </div>
+        </div>
+        <div class="submit-wrap">
+            <button type="submit" class="post-button">Update</button>
+        </div>
+        <div class="submit-wrap" (click)="cancelImage()">
+            <button type="button" class="post-button">Cancel image</button>
+        </div>
+    </form>
+</div>

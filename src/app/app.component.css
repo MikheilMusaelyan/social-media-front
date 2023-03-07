@@ -1,0 +1,142 @@
+.main{
+    position: relative;
+    padding: 0;
+    max-width: 2000px !important;
+    margin: auto;
+}
+.abs{
+    display: none;
+    position: fixed;
+    width: 0;
+    height: 0;
+    z-index: 15;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.468);
+}
+.absOpen{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+fa-icon{
+    color: white;
+}
+.wrapper {
+    position: relative;
+    border-radius: var(--radius);
+    z-index: 3;
+    width: 25%;
+}
+
+.loading{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(18, 18, 18, 0.276);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.informError{
+    width: 200px;
+    border-radius: 30px;
+    min-height: 50px;
+    background: rgb(255, 22, 22);
+    position: fixed;
+    margin: 10px;
+    padding: 10px 4px;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 100ms;
+}
+.informError span{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+}
+
+.close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.close fa-icon{
+    font-size: 22px;
+}
+.fixed-header{
+    max-width: 2000px !important;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.router-wrapper{
+    min-height: 100svh;
+}
+
+.fixed-section{
+    transition: 200ms;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 11;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.file-wrap{
+    /* opacity: 0; */
+    width: 75%;
+    position: relative;
+    height: 100%;
+    display: grid;
+    place-content: center;
+}
+
+.big-img {
+    border-radius: var(--radius);
+    display: block;
+    width: 100%;
+    max-height: 90vh;
+}
+
+@media screen and (max-width: 550px) {
+    .router-wrapper{
+        background: white;
+    }
+}
+@media screen and (max-width: 700px){
+    .file-wrap{
+        width: 100%;
+    }
+    .fixed-section{
+        padding: 10px;
+    }
+}
+
+
+
+
+
+

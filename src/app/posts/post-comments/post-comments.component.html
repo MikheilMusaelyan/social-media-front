@@ -1,0 +1,41 @@
+<div class="main">
+    <div class="content-wrap">
+        <section class="posts-feed">
+            <div class="posts-wrapper post-section">
+                <div class="post">
+                    <div class="uploader-wrapper" [routerLink]="['/my_account', postData?.creatorId]">
+                        <div class="uploader-img-wrap">
+                            <img class="uploader-img"
+                            *ngIf="postData?.creatorPic else userIcon"
+                                [src]="postData?.creatorPic"
+                                alt="No photo">
+                                <ng-template #userIcon>
+                                    <fa-icon [icon]="usersIcon" class="userIcon"></fa-icon>
+                                </ng-template>
+                        </div>
+                        <div class="uploader-date">
+                            <h3 class="uploader-name">{{postData?.nickname}}</h3>
+                            <span class="uploader-date-span">{{postData?.date | transDate}}</span>
+                        </div>
+                    </div>
+                    <div class="post-title">
+                        <h3 [ngClass]="{'adjust-margin': !postData?.img}">
+                            {{postData?.title}}
+                        </h3>
+                    </div>
+                    <div class="post-file-wrap" *ngIf="postData.img ">
+                        <img class="post-file"
+                            openImg
+                            [src]="postData?.img"
+                            alt="">
+                    </div>
+                    <div class="comments">
+                        <app-comment [postId]="postData?.postId">
+                        </app-comment>
+                    </div>
+                    <!-- comment ended -->
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

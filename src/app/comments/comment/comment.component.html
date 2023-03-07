@@ -1,0 +1,10 @@
+<!-- add comment -->
+<app-add-comment [postId]="postId"></app-add-comment>
+
+<!-- first comment -->
+<div class="comment-block-wrap"
+*ngFor="let postComment of postComments; let i = index">
+    <app-single-comment [comment]="postComment" [postId]="postId" [cIndex]="i"></app-single-comment>
+</div>
+
+<footer class="comment-block-wrap" #commentsFooter></footer>

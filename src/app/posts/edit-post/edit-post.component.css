@@ -1,0 +1,114 @@
+.main{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+.wrap-up-info{
+    display: flex;
+    align-items: center;
+}
+.post-edit{
+    border-radius: 20px;
+    background: white;
+    padding: 20px;
+    width: 40%;
+    min-width: 700px;
+    height: min-content;
+}
+
+.uploader-img-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden !important;
+}
+.uploader-img{
+    height: 44px;
+}
+
+.uploader-img-wrap {
+    background: rgb(240, 240, 240);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+/* right side */
+.uploader-date {
+    display: flex;
+    height: 44px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.uploader-name {
+    margin: 0 0 4px 0;
+}
+
+/* image */
+.image-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(240, 240, 240);
+    margin: 5px 0 10px 0;
+}
+.image{
+    max-width: 100%;
+    max-height: var(--maxImgHeight);
+}
+.upload-image{
+    min-width: 38px !important;
+    padding-bottom: 10px;
+}
+.upload-img-i {
+    cursor: pointer;
+    font-size: 30px;
+    color: var(--mainBackground);
+}
+.invisible-file {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+/* post */
+.post-text-wrap {
+    padding: 15px 0 10px 0;
+    height: auto !important;
+}
+
+.post-text {
+    width: 100%;
+    outline: none !important;
+    resize: none;
+    overflow: hidden;
+    font-size: 15px;
+    padding: 10px 10px 0 10px;
+    border: none !important;
+    outline: none !important;
+    min-height: 40px;
+}
+/* submit button */
+.submit-wrap{
+        display: inline-block;
+}
+.post-button {
+    margin: 6px 6px 0 0;
+    cursor: pointer;
+    border: none;
+    padding: 8px 20px;
+    border-radius: var(--radius);
+    background: var(--mainBackground);
+    color: white;
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 800px){
+    .post-edit{
+        min-width: initial !important;
+        width: 100% !important;
+    }
+}

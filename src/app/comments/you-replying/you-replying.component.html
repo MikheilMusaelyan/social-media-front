@@ -1,0 +1,36 @@
+<div class="user-replying">
+    <form class="commenter-wrap" [formGroup]="replyForm" (ngSubmit)="onSubmit()">
+        <div class="comment-circle"></div>
+        <div class="comment-info-part">
+            <div class="commenter-name-wrap">
+                <h5 class="commenter-name">You</h5>
+            </div>
+        </div>
+        <div class="comment-part">
+            <div class="comment-wrap">
+                <textarea 
+                #tArea
+                class="add-text-comment" 
+                maxlength="250" 
+                incHeight 
+                placeholder="Add new comment"
+                formControlName="comment"
+                ></textarea>
+            </div>
+            <div class="image-wrapper" *ngIf="pickedImage">
+                <div class="close-it" (click)="closeImage()">
+                    <fa-icon [icon]="closeIcon" class="close-icon"></fa-icon>
+                </div>
+                <img openImg [src]="pickedImage" alt="" class="picked-image">
+            </div>
+            <div class="comment-interaction">
+                <div class="interaction-wrap" (click)="invFile.click()">
+                    <fa-icon [icon]="imageIcon"></fa-icon>
+                    <span class="int-span">Upload image</span>
+                    <input #invFile type="file" class="invisible-file" (change)="pickImage($event)">
+                </div>
+            </div>
+            <button type="submit" class="reply">Add comment</button>
+        </div>
+    </form>
+</div>

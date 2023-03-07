@@ -1,0 +1,63 @@
+<div class="main" [@main]="main">
+    
+    <div class="content-wrap">
+        <section class="posts-feed">
+        <div class="wrap-user-info">
+            <div class="main-acc-info-wrap" >
+                <img class="cover-picture" [src]="coverPreview ? coverPreview: userObject?.afterLogin.coverPic">
+                <div class="cover-dark" [ngStyle]="{'background-color': coverPreview || userObject?.afterLogin.coverPic ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.8)'}"></div>
+                <div class="main-acc-info">
+                    
+                    <div class="three-info-wrap" >
+                        <div class="acc-info-wrap">
+                            <app-spinner *ngIf="postCountLoading"></app-spinner>
+                            <h4 class="user-info-h5" *ngIf="!postCountLoading">
+                                {{this?.usersPostCount + ' Posts'}}</h4>
+                        </div>
+                        <div class="text-user-wrap" *ngIf="!myAcc && isAuth">
+                            <fa-icon class="text-user-icon" [icon]="messageIcon" (click)="createConnection()"></fa-icon>
+                        </div>
+                    </div>
+                    
+                    <div class="three-info-wrap">
+                        <div class="acc-img-wrap">
+                            <div class="acc-img-wrapper">
+                                <img openImg class="acc-img" *ngIf="profilePreview || userObject?.afterLogin.profilePic" [src]="profilePreview ? profilePreview : userObject?.afterLogin.profilePic">
+                                <div class="no-image-preview" *ngIf="!userObject?.afterLogin.profilePic && !profilePreview">
+                                    <fa-icon class="user-icon" [icon]="userIcon"></fa-icon>
+                                </div>
+                            </div>
+
+                            <div class="name-info">
+                                <h2 class="user-name" *ngIf="userObject">{{userObject.nickname}}</h2>
+                                <div class="friend-active-alert"></div>
+                            </div>
+
+                            
+
+                            <button class="addFriend" 
+                            *ngIf="!myAcc && isAuth" (click)="addFriend(false)">
+                                <h4 class="addFriendHeader" (click)="addFriend">{{buttonMessage}}</h4>
+                            </button>
+
+                            <button class="addFriend" 
+                            *ngIf="!myAcc && isAuth && haveRecieved" (click)="addFriend(true)">
+                                <h4 class="addFriendHeader" (click)="addFriend">Reject</h4>
+                            </button>
+                        </div>
+                        
+                    </div>
+                    <div class="three-info-wrap"></div>
+
+                </div>
+            </div>
+            <!-- edit profile -->
+            <section *ngIf="myAcc">
+                <app-edit-profile *ngIf="userId" [userId]="userId" (imgEmitter)="getImg($event)"></app-edit-profile>
+            </section>
+        </div>
+            <app-posts [userId]="userId" [myId]="myId" *ngIf="userObject" 
+            (userPostCountEmitter)="getUserPostCount($event)"></app-posts>
+        </section>
+    </div>
+</div>

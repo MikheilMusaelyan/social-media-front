@@ -1,0 +1,92 @@
+.message-main{
+    width: 100% !important;
+    margin-top: 12px;
+    display: flex;
+}
+
+.sent-message-main{
+    justify-content: flex-end;
+}
+.recieved-message-main{
+    justify-content: flex-start;
+}
+.sent-message-box {
+    border-bottom-right-radius: 3px !important;
+    margin-right: 15px;
+}
+.recieved-message-box {
+    margin-left: 15px;
+    border-bottom-left-radius: 3px !important;
+}
+.sent-message-wrap {
+    flex-direction: row;
+}
+.recieved-message-wrap {
+    flex-direction: row-reverse;
+}
+.sent-date {
+    text-align: right;
+}
+.recieved-date {
+    text-align: left;
+}
+
+
+.message-wrap{
+    max-width: 65% !important;
+    display: flex;
+    align-items: flex-end;
+}
+
+.message-box{
+    box-shadow: 0 8px 32px 0 rgba(82, 91, 220, 0.324);
+    background: var(--mainBackground);
+    border-radius: 20px;
+    padding: 10px 12px;
+}
+
+/* images  */
+/* profile image */
+
+/* images */
+.img-wrap, .img{
+    border-radius: 10px;
+    width: 100% !important;
+    max-height: 600px;
+    cursor: pointer;
+}
+.img-wrap{
+    margin-bottom: 5px;
+}
+.imgs-wrap{
+    margin-bottom: 10px;
+    width: 100%;
+}
+/*  */
+.text-wrap{
+    max-width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.text{
+    color: white;
+    line-height: 22px;
+    font-size: 13.5px;
+    font-weight: bold;
+    display: inline;
+}
+.date{
+    color: rgb(229, 229, 229);
+    margin: 0;
+    font-weight: 200;
+    margin-top: 5px;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .message-box {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 8px !important;
+    }
+}

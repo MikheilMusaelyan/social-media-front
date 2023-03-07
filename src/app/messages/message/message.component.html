@@ -1,0 +1,26 @@
+<div class="message-main" 
+[ngClass]="yourMsg.sender === myId ? 'sent-message-main' : 'recieved-message-main' ">
+    <div class="message-wrap" 
+    [ngClass]="yourMsg.sender === myId  ? 'sent-message-wrap' : 'recieved-message-wrap' ">
+        <div class="message-box" 
+        [ngClass]="yourMsg.sender === myId  ? 'sent-message-box' : 'recieved-message-box' ">
+            <!-- <span class="loading-image" *ngIf="isLoading">Loading...</span> -->
+            <div class="imgs-wrap" *ngIf="yourMsg.images || yourMsg.imgToShow">
+                <div class="img-wrap">
+                    <img openImg class="img" [src]="yourMsg.images || yourMsg.imgToShow">
+                </div>
+            </div>
+            <div class="text-wrap">
+                <div style="width: 100%;">
+                    <span class="text">
+                        {{yourMsg.message}}
+                    </span>
+                </div>
+            </div>
+            <h6 class="date" 
+            [ngClass]="yourMsg.sender === myId ? 'sent-date' : 'recieved-date' "
+            >{{yourMsg.date | transDate}}</h6>
+        </div>
+
+    </div>
+</div>

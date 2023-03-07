@@ -1,0 +1,56 @@
+.section{
+    position: fixed; 
+    top: 0px;
+    left: calc(50% - 100px);
+    z-index: 200;
+    display: flex;
+    justify-content: flex-end;
+    transform: translateY(-100%);
+    cursor: pointer;
+}
+.notif{
+    padding: 7px;
+    width: 200px;
+    max-width: 200px !important;
+    overflow: hidden;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgb(205, 201, 201);
+    border-radius: 25px;
+    display: flex;
+    /* transform: translateY(0px); */
+    /* background-color: black; */
+}
+.image-wrap, .image{
+    height: 40px;
+}
+.image-wrap{
+    background: rgb(240, 240, 240);
+    display: grid;
+    place-content: center;
+    margin-right: 5px;
+    border-radius: 50%;
+    transition: 1s;
+    width: 40px !important;  
+    min-width: 40px;  
+    overflow: hidden;
+}
+.icon{
+    font-size: 20px;
+    color: var(--mainBackground);
+}
+.nickname{
+    color: var(--mainBackground);
+    font-size: 14px;
+    padding-top: 3px;
+    overflow: hidden;
+    word-wrap: break-word;
+    font-weight: bold;
+}
+.text{
+    max-width: 135px !important;
+    overflow: hidden;
+}
+.text span{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

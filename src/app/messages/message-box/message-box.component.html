@@ -1,0 +1,72 @@
+<div class="message-box-main">
+    <div class="message-box-primary">
+
+        <div class="contact-user" *ngIf="friendData" [routerLink]="['/my_account', friendData?._id]" >
+            <!-- image and nickname -->
+            <div class="img-wrap">
+                <img class="user-img" [src]="friendData?.profilePic" *ngIf="friendData?.profilePic else noImage">
+                <ng-template #noImage>
+                    <div class="user-no-img">
+                        <fa-icon class="userIcon" [icon]="userIcon"></fa-icon>
+                    </div>
+                </ng-template>
+            </div>
+
+            <div class="user-nickname">
+                <h3>{{friendData?.nickname}}</h3>
+            </div>
+
+        </div>
+
+        <div *ngIf="miniWindow" (click)="goToMain()" class="goback">
+            <fa-icon class="userIcon" [icon]="leftArrow"></fa-icon>
+        </div>
+        
+        <div class="message-box-main-wrap">
+            <div class="text-friends" *ngIf="!friendData">
+                <div *ngIf="!chatLoading">
+                    Meet New People!
+                </div>
+                <app-spinner *ngIf="chatLoading"></app-spinner>
+            </div>
+
+            <div class="message-box-wrap" #messageBox [@main]="main"
+            [ngClass]="{'padding-bottom-170': imgToShow}" *ngIf="myId" (scroll)="msgOnScroll($event)">
+                <app-message #allMessagesRendered *ngFor="let message of messagesArr" 
+                [myId]="myId" [yourMsg]="message" [profilePic]="friendData?.profilePic" 
+                ></app-message>
+            </div>
+
+            <form *ngIf="friendData" #mainForm [formGroup]="messageForm" (submit)="sendMessage()">
+                <div class="type-message-main" #typeMessage>
+                    
+                    <button type="button" class="upload" (click)="fileInp.click()">
+                        <fa-icon class="plusIcon" [icon]="plusIcon"></fa-icon>
+                        <input #fileInp type="file" name='files' multiple="multiple" class="fileInput" (change)="pickImg($event)">
+                    </button>
+
+                    <div class="input-wrap">
+                        <textarea #textarea incHeight class="text-input" 
+                        placeholder="Type your message" formControlName="message"
+                        ></textarea>
+                    </div>
+
+                    <div *ngIf="imgToShow" class="img-to-show-wrap" #imgToShowWrap>
+                        <img openImg class="img-to-show" [src]="imgToShow" alt="">
+                    </div>
+                    
+                    <button class="upload" type="submit">
+                        <fa-icon class="sendIcon" [icon]="sendIcon"></fa-icon>
+                    </button>
+                </div>
+                <button 
+                #toggle 
+                (click)="toggleForm(mainForm, typeMessage, toggle)" 
+                class="upload toggle-form" type="button">
+                    <fa-icon class="sendIcon close-icon" [icon]="!emptyForm ? closeIcon : circleIcon"></fa-icon>
+                </button>
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="contacts-wrapper-main" #mainDiv>
+    <!-- <div class="contacts-text-wrap">
+        <fa-icon class="contactsIcon" [icon]="contactsIcon"></fa-icon>
+        <h2 class="contacts-text">Friends</h2>
+    </div> -->
+
+    <div class="search-bar-wrap">
+        <app-search-bar></app-search-bar>
+    </div>
+
+    <div class="contacts-wrapper">
+
+        <div class="contact-wrapper" #eTargets *ngFor="let friend of myFriends" 
+        (click)="exportFriendInfo(friend, eTargets)">
+            <div class="contact">
+                <div class="img-name-wrap">
+                    <div class="img-wrap">
+                        <div *ngIf="friend?.connected" class="friend-active-alert"></div>
+                        <div class="profilePic-wrap">
+                            <img class="profilePic" *ngIf="friend.profilePic else iconTemplate" [src]="friend.profilePic">
+                            <ng-template #iconTemplate>
+                                <div class="no-image">
+                                    <fa-icon [icon]="userIcon" class="no-image-icon"></fa-icon>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <div class="name-status-wrap">
+                        <h4 class="name-text">{{friend.nickname}}</h4>
+                        <!-- <h6 class="status-text">2 months ago</h6> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-friends-wrap" *ngIf="!myFriends?.length">
+            <h3>No Contacts Yet</h3>
+        </div>
+        
+    </div>
+    <div class="border-bottom"></div>
+</div>

@@ -1,0 +1,31 @@
+<div class="main">
+    <div class="mainC">
+        <h5 class="header">Sign up</h5>
+        <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="authForm">
+            <div class="input-wrap">
+                <input 
+                    maxlength="30"
+                    class="auth-inp" 
+                    type="text" 
+                    placeholder="Email" formControlName="email">
+                    <label class="invalid-nick" *ngIf="getV('email')">Invalid Email</label>
+                <input 
+                    maxlength="12"
+                    class="auth-inp" 
+                    type="text" placeholder="Username" formControlName="nickname">
+                    <label class="invalid-nick" *ngIf="getV('nickname')">At least 8 characters</label>
+                <input 
+                    maxlength="16"
+                    class="auth-inp" 
+                    type="password" placeholder="Password" formControlName="password">
+                    <label class="invalid-nick" *ngIf="getV('password')">At least 8 characters</label>
+                <input 
+                    maxlength="16"
+                    class="auth-inp" 
+                    type="password" placeholder="Confirm password" #confirmPass>
+                    <label class="invalid-nick" *ngIf="!isValid && authForm.dirty">Not Valid</label>
+            </div>
+            <button [disabled]="authForm.invalid" type="submit" class="submit">Create Account</button>
+        </form>
+    </div>
+</div>

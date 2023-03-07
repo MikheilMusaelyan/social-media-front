@@ -1,0 +1,13 @@
+<div class="wrap-up-info" (click)="seeUser()">
+    <div class="uploader-img-wrap">
+        <img class="uploader-img" *ngIf="obtainedPost.creatorProfilePic else userIcon"
+            [src]="obtainedPost.creatorProfilePic">
+        <ng-template #userIcon>
+            <fa-icon [icon]="usersIcon" class="userIcon"></fa-icon>
+        </ng-template>
+    </div>
+    <div class="uploader-date">
+        <h3 class="uploader-name">{{obtainedPost.creatorNickname}}</h3>
+        <span class="uploader-date-span">{{obtainedPost.date | transDate}}</span>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="commenter-wrap">
+    <div class="comment-circle" 
+    style="width: 7px; height: 7px; left: 3.3px;" ></div>
+    <app-image-name [obtainedPost]="returnUserInfo()"></app-image-name>
+
+    <div class="comment-part">
+        <div class="comment-wrap">
+            <span class="comment">{{comment.comment}}</span>
+        </div>
+        <div class="image-wrapper" *ngIf="comment.image">
+            <img openImg [src]="comment.image" alt="" class="uploaded-image">
+        </div>
+        <div class="comment-interaction">
+            <div class="interaction-wrap" (click)="reply()">
+                <span class="commentMethod">Reply</span>
+            </div>
+            <div class="interaction-wrap" (click)="edit()" *ngIf="this.myId === comment.creatorId">
+                <span class="commentMethod">Edit</span>
+            </div>
+            <div class="interaction-wrap" (click)="deleteComment()" *ngIf="this.myId === comment.creatorId">
+                <span class="commentMethod">Delete</span>
+            </div>
+        </div>
+    </div>
+    <app-you-replying (commentEmitter)="getReply($event)" *ngIf="isReplying"></app-you-replying>
+    <app-reply *ngFor="let reply of comment.replies; let i = index" 
+    [replyObject]="reply" 
+    [commentId]="comment._id"
+    [rIndex]="i"
+    [cIndex]="cIndex"
+    ></app-reply>
+</div>
+
+<!-- <div class="reply-count-wrap" 
+*ngIf="comment?.replies?.length - replyPosition > 0" (click)="getMoreReplies()">
+    <span class="reply-count" style="color: red;">{{comment?.replies?.length - replyPosition}} {{comment?.replies?.length > 1 ||
+        comment.replies.length == 0 ? 'Replies' : 'Reply'}} </span>
+</div> -->
