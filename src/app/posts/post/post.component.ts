@@ -4,6 +4,7 @@ import { faComment, faEdit, faList, faThumbsUp, faTrash, faUser } from '@fortawe
 import { PostService } from '../../services/post.service';
 import { authService } from 'src/app/services/auth.service'; 
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-post',
@@ -57,6 +58,7 @@ export class PostComponent implements OnInit, OnDestroy {
     private router:Router, 
     private postService:PostService, 
     private authService:authService,
+    private commentService: CommentService
   ) {
     this.userId = this.authService.getUserId();
   }
@@ -73,14 +75,7 @@ export class PostComponent implements OnInit, OnDestroy {
 
   navigateComments(){
     this.postService.saveScroll(scrollY);
-    this.router.navigate([
-      '/post-comments',
-      this.obtainedPost._id,
-      this.obtainedPost.creatorProfilePic, 
-      this.obtainedPost.image, this.obtainedPost.post,
-      this.obtainedPost.date, this.obtainedPost.creatorNickname,
-      this.obtainedPost.creatorId
-    ])
+    this.commentService.getSinglePost(this.obtainedPost._id)
   };
 
   onDelete(){

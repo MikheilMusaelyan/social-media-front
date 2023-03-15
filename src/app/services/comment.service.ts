@@ -4,6 +4,7 @@ import { Subject } from "rxjs";
 import { Location } from "@angular/common";
 import { LoadingServiceService } from "./loading-service.service";
 import { MessageService } from "./message.service";
+import { Router } from "@angular/router";
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +20,8 @@ export class CommentService {
         private http: HttpClient,
         private location: Location,
         private loadingService: LoadingServiceService,
-        private messageService: MessageService
+        private messageService: MessageService,
+        private router: Router
     ){
     }
     
@@ -49,7 +51,6 @@ export class CommentService {
 
         this.http.post('https://socialmedia.up.railway.app/posts/comment/' + postId, fReader)
         .subscribe((data : any) => {
-            console.log(data)
             this.loadingService.startLoading(false);
             this.commentsChanged.next({ change: 'addedComment', data: data })
             if(data?.sendNot){
@@ -125,5 +126,21 @@ export class CommentService {
 
     getMoreReplies(replyPosition: number){
         return this.http.get("https://socialmedia.up.railway.app/users/getReplies" + replyPosition)
+    }
+
+    getSinglePost(id: number | string) {
+        return this.http.get('https://socialmedia.up.railway.app/posts/getSinglePost?' + `postId=${id}`)
+        .subscribe((post: any) => {
+            this.router.navigate([
+              '/post-comments',
+                id,
+                post.creatorProfilePic, 
+                post.image,
+                post.post,
+                post.date, 
+                post.creatorNickname,
+                post.creatorId
+            ]);
+        });
     }
 }

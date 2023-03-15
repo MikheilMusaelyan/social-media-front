@@ -5,6 +5,7 @@ import { NgZone } from '@angular/core';
 import { NotificationService } from './notification.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-notifications',
@@ -20,7 +21,8 @@ export class NotificationsComponent implements OnDestroy, AfterViewInit, OnInit 
   constructor(
     private ngZone: NgZone,
     private notificationService: NotificationService,
-    private router: Router
+    private router: Router,
+    private commentService: CommentService
   ) {
     socket.on('notification', () => {
       this.getNotifications()
@@ -80,9 +82,7 @@ export class NotificationsComponent implements OnDestroy, AfterViewInit, OnInit 
     if(info.type == 'userProfile'){
       this.router.navigate([`my_account/${info.linker}`])
     } else if(info.type == 'post') {
-
-    } else {
-      
-    }
+      this.commentService.getSinglePost(info.linker)
+    } 
   }
 }
