@@ -8,6 +8,7 @@ import { io } from 'socket.io-client';
 import { ErrorService } from './services/error.service';
 import { LoadingServiceService } from './services/loading-service.service';
 import { MessageService } from './services/message.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -54,7 +55,11 @@ export class AppComponent implements OnInit, OnDestroy{
     private postService:PostService,
     private error: ErrorService,
     private loadingService: LoadingServiceService,
-  ){
+    private authService: authService,
+    private router: Router
+  ){  
+    router.navigate(['login'])
+
     this.imageSubscription = this.postService.openImgSubject
     .subscribe((imageUrl:string) => {
       if(!imageUrl){
@@ -100,6 +105,17 @@ export class AppComponent implements OnInit, OnDestroy{
         }, 100);
       }
     })
+
+    const expDate = localStorage?.getItem('expDate')
+    if(
+      expDate != null || JSON.parse(expDate) != 0 && 
+      new Date().getTime() <= new Date(JSON.parse(expDate)).getTime()
+    ){
+      this.authService.autoLogin()
+    } else {
+      localStorage.removeItem('tokenData')
+      localStorage.removeItem('expDate')
+    }
   }
 
   title = 'social-media';

@@ -48,6 +48,8 @@ export class MessageService {
     messagesOpen: boolean = false;
     openMsgId: string;
 
+    temporaryUserImage: string;
+
     sendNotification(userId: string){
         socket.emit('notification', userId)
     }

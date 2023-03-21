@@ -97,24 +97,43 @@ export class authService implements OnInit{
             password: password,
             nickname: nickname,
         }
-        this.http.post<{token: string, userId: string, profilePic: string}>(
-            'https://socialmedia.up.railway.app/users/login', user)
+        this.http.post<{token: string, userId: string, profilePic: string}>('https://socialmedia.up.railway.app/users/login', user)
         .subscribe(response => {
-            this.mySelf = {
-                nickname:<string> nickname,
-                profilePic:<string> response?.profilePic
-            }
-            localStorage.setItem('myToken', response.token)
-            this.authStatusSubject.next(true);
-            this.token = response.token;
-            this.userId = response.userId;
-            this.messageService.joinRoom(this.userId);
-            this.isAuth = true;
-            this.router.navigate(['/']);
+            this.loginFunc(response, nickname)
         }, err => {
             console.log(err)
         })
     };
+
+    loginFunc(response: any, nickname: string, isLoggedIn?:boolean) {
+        this.mySelf = {
+            nickname:<string> nickname,
+            profilePic:<string> response?.profilePic
+        }
+
+        if(!isLoggedIn){
+            this.token = response.token;
+            localStorage.setItem('tokenData', response.token)
+            localStorage.setItem('expDate', JSON.stringify(new Date().getTime()) + 60 * 1000 * 3)
+        } else {
+            this.token = localStorage.getItem('tokenData')
+        }
+
+        this.userId = response.userId;
+        this.messageService.joinRoom(this.userId);
+        this.isAuth = true;
+        this.authStatusSubject.next(true);
+        this.router.navigate(['/']);
+    }
+
+    autoLogin(){
+        const token = localStorage.getItem('tokenData')
+        const q = `?token=${token}`
+        this.http.get('https://socialmedia.up.railway.app/users/autoLogin' + q)
+        .subscribe((response: any) => {
+            this.loginFunc(response, response['nickname'], true)
+        })
+    }
 
     logout(){
         this.mySelf = null;
@@ -123,6 +142,9 @@ export class authService implements OnInit{
         this.authStatusSubject.next(false);
         this.token = null;
         this.router.navigate(['/signin']);
+        
+        localStorage.removeItem('tokenData')
+        localStorage.removeItem('expDate')
     }
 
     

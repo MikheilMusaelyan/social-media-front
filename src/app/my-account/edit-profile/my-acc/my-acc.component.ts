@@ -202,9 +202,8 @@ export class MyAccComponent implements OnInit, OnDestroy {
         nickname: this.userObject.nickname,
         _id: this.userObject._id,
         connected: this.userObject.connected,
-        profilePic: this.userObject.profilePic
+        profilePic: this.userObject.afterLogin.profilePic
       };
-
 
       this.router.navigate(['/messages']);
       this.messageService.changeState(true);
