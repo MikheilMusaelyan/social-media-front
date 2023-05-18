@@ -64,10 +64,12 @@ export class PostsComponent implements OnInit, AfterViewInit, OnDestroy {
       } 
       else if(message.change === 'deletedPost'){
         this.canFetch = true;
-        this.postCount = 20;
-        this.posts = [];
-        this.isLoading = true;
-        this.fetchPosts()
+        this.postCount -= 1;
+        this.posts.map((post, index) => {
+          if(String(post._id) == String(message.id)){
+            this.posts.splice(index, 1)
+          }
+        })
       }
     })
   };

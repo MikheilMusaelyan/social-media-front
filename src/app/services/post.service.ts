@@ -91,7 +91,7 @@ export class PostService{
             this.loadingService.startLoading(false)
             if(deleted.response.deletedCount >= 1){ 
                 this.postAddedSubject.next
-                ({change: 'deletedPost'})
+                ({change: 'deletedPost', id: id})
             } else {
                 this.error.throwError('Could not delete post')
             }

@@ -1,6 +1,46 @@
 <div class="main">
     <div class="content-wrap" [@main]="main">
-        <div class="fill-up"></div>
+        <div class="fill-up">
+            <div class="fixed leftSide" *ngIf="!miniWindow">
+                <div  class="li-wrap" >
+                    <li class="nav-li" (click)="toMyAcc()" *ngIf="isAuth">
+                        <div class="wrapli">
+                            <fa-icon [icon]="profile"></fa-icon><span class="li-span">Profile</span>
+                        </div>
+                    </li>
+                    <li class="nav-li" routerLink="" >
+                        <div class="wrapli">
+                            <fa-icon [icon]="home"></fa-icon><span class="li-span">Home</span>
+                        </div>
+                    </li>
+                    <li class="nav-li" routerLink="signin" *ngIf="!isAuth">
+                        <div class="wrapli">
+                            <fa-icon [icon]="signup"></fa-icon><span class="li-span">Signup</span>
+                        </div>
+                    </li>
+                    <li class="nav-li" routerLink="login" *ngIf="!isAuth">
+                        <div class="wrapli">
+                            <fa-icon [icon]="login"></fa-icon><span class="li-span">Login</span>
+                        </div>
+                    </li>
+                    <li class="nav-li" *ngIf="isAuth" (click)="logout()">
+                        <div class="wrapli">
+                            <fa-icon [icon]="logOut"></fa-icon><span class="li-span">Logout</span>
+                        </div>
+                    </li>
+                    <li class="nav-li" *ngIf="isAuth" (click)="toMessages()">
+                        <div class="wrapli">
+                            <fa-icon [icon]="messages"></fa-icon><span class="li-span">Messages</span>
+                        </div>
+                    </li>
+                    <li class="nav-li" *ngIf="isAuth" routerLink="notifications">
+                        <div class="wrapli">
+                            <fa-icon [icon]="notifications"></fa-icon><span class="li-span">Notifications</span>
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </div>
         <section class="posts-feed">
             <!-- add post -->
             <router-outlet></router-outlet>

@@ -6,7 +6,7 @@
             <fa-icon [icon]="menuIcon"></fa-icon>
         </div>
         
-        <div  class="li-wrap" *ngIf="openLis" [@liwrap]="liwrap" >
+        <div class="li-wrap" *ngIf="openLis" [@liwrap]="liwrap" >
             <li class="nav-li"  
             (click)="toMyAcc()" *ngIf="isAuth"><span class="li-span">Profile</span></li>
             <li class="nav-li" 
