@@ -58,7 +58,6 @@ export class AppComponent implements OnInit, OnDestroy{
     private authService: authService,
     private router: Router
   ){  
-    router.navigate(['login'])
 
     this.imageSubscription = this.postService.openImgSubject
     .subscribe((imageUrl:string) => {

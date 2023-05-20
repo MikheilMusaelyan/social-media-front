@@ -119,7 +119,9 @@
     display: grid;
     place-content: center;
 }
-
+.no-contacts-span{
+    color: var(--mainBackground);
+}
 .no-contacts{
     width: 100%;
     display: flex;
